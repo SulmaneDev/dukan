@@ -1,0 +1,35 @@
+cnic customer lazmii nhn hy! optional hy?
+code sirf numbers mn ho ga
+Product ka search bar ho ga purchase mn?
+Tax optional 
+Image Scan 
+Discount % and Coupan Discount Fixed rate Disocunt Rupees
+Supplier Balance should show on change 
+Supplier Balance add ho ga k kitna dia hy
+POS mn IMEI bhii add ho ga kanosa Mobile sale hwa hy IMEI k lehaz sy
+Purchase or POS ko set krna hy Ek saaa banana hy SHow shii krana hy
+
+
+    8/15/2025
+
+On purchase discount %discount and rupees discount add krna hy lazmii isssi weekend
+mobisoft.pk demo for purchase ko dekh k banana hy exactly
+
+      8/27/2025
+CNIC PHone City Address (City ki base py filter for reports)
+// POS py customer ki detail add krnii hy (POS) 1) Customer information 2) EMEI Scan
+IMEI scan py product ka name aor price automatic get ho gii
+To add also sales and purchase return too 
+Ledger (Paissy ki detail kitna aya kitna gaya)??
+Receipt from customer 
+Payment to supplier 
+General Voucher( 1 to 1 details )
+expenses ( Form method cash or back description)
+
+
+
+
+
+
+
+ 
