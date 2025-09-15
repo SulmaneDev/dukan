@@ -37,4 +37,8 @@ class Supplier extends Model
     {
         return $this->morphMany(PurchaseReturn::class, 'party');
     }
+      public function balance()
+    {
+        return $this->hasMany(Balance::class, 'supplier_id', 'id');
+    }
 }

@@ -33,6 +33,7 @@ class SaleService
         return view('pages.admin.sale.create', [
             'brands'   => $user->brand()->get(),
             'products' => $user->product()->get(),
+            'purchase'=> $user->purchase()->with(['product','brand'])->get(),
             'customers' => $customers->map(fn($c) => [
                 'id'   => $c->id,
                 'name' => $c->name,

@@ -5,8 +5,6 @@ namespace App\Services\Admin;
 use App\Http\Requests\Common\DeletableRequest;
 use App\Http\Requests\CreateSaleReturnRequest;
 use App\Http\Requests\UpdateSaleReturnRequest;
-use App\Models\Customer;
-use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,7 +33,8 @@ class SaleReturnService
         return view('pages.admin.sale_return.create', [
             'brands'    => $user->brand()->get(),
             'products'  => $user->product()->get(),
-            'sales'     => $user->sale()->get(),
+            'purchases' => $user->purchase()->with(['product', 'brand'])->get(),
+            'sales'     => $user->sale()->with(['product'])->get(),
             'customers' => $customers->map(fn($c) => [
                 'id'   => $c->id,
                 'name' => $c->name,
@@ -69,7 +68,7 @@ class SaleReturnService
     {
         $return = $req->user()->saleReturn()
             ->where('id', $id)
-            ->with(['customer','product','brand','sale'])
+            ->with(['customer', 'product', 'brand', 'sale'])
             ->first();
 
         if (!$return) {

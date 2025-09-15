@@ -17,19 +17,40 @@ class Product extends Model
     ];
 
     protected $casts = [
-        "brand_id"=>"integer",
-        "user_id"=>"integer",
+        "brand_id" => "integer",
+        "user_id" => "integer",
     ];
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function sales() {
-        return $this->hasMany(Product::class);
+    public function purchase()
+    {
+        return $this->hasMany(Purchase::class);
     }
 
-    public function brand(): BelongsTo {
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function brand(): BelongsTo
+    {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function saleReturn() {
+        return $this->hasMany(SaleReturn::class);
+    }
+
+    public function purchaseReturn() {
+        return $this->hasMany(PurchaseReturn::class);
+    }
+
+    public function balance()
+    {
+        return $this->hasMany(Balance::class, 'product_id', 'id');
     }
 }

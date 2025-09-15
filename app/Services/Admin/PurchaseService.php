@@ -9,6 +9,7 @@ use App\Models\Supplier;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PurchaseService
 {
@@ -59,17 +60,23 @@ class PurchaseService
         $data = $request->validated();
         $data['user_id'] = Auth::id();
 
-        // JSON encode imeis if array
         if (isset($data['imeis']) && is_array($data['imeis'])) {
             $data['imeis'] = json_encode($data['imeis']);
         }
 
-        // Party handling
         $partyType = $request->input('party_type'); // "supplier" or "customer"
         $partyId = $request->input('party_id');
 
+        
+
         if ($partyType === 'supplier') {
             $party = Auth::user()->supplier()->findOrFail($partyId);
+            $party->balance()->create([
+                "user_id" => $data['user_id'],
+                "supplier_id" => $party->id,
+                "product_id" => $data['product_id'],
+                "balance" => count(json_decode($data['imeis'])) * $data['price'],
+            ]);
             $purchase = $party->purchases()->create($data + ['party_type' => Supplier::class]);
         } elseif ($partyType === 'customer') {
             $party = Auth::user()->customer()->findOrFail($partyId);
@@ -104,7 +111,7 @@ class PurchaseService
             ]);
         }
 
-        $user = $req->user()->load(['supplier', 'customer']); 
+        $user = $req->user()->load(['supplier', 'customer']);
 
         return view('pages.admin.purchase.edit', [
             'purchase' => $purchase,

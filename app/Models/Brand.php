@@ -20,4 +20,8 @@ class Brand extends Model
     public function product():HasMany {
         return $this->hasMany(Product::class);
     }
+
+    public function sale():HasMany {
+        return $this->hasMany(Sale::class);
+    }
 }

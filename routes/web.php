@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\BalanceController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\LedgerController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PurchaseController;
 use App\Http\Controllers\Admin\PurchaseReturnController;
@@ -27,7 +29,7 @@ Route::post('scan', [ScanController::class, 'scan'])->name('scan')->middleware('
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
-    Route::get('',function () {})->name('dashboard');
+    Route::get('', function () {})->name('dashboard');
 
     /**
      * Brands resource.
@@ -122,5 +124,20 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::put('/update/{id}', 'update')->name('update');
         Route::delete('/delete', 'destroy')->name('destroy');
+    });
+
+
+    /**
+     * Supplier Balance
+     */
+    Route::prefix('balance')->name('balance.')->controller(BalanceController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('/edit/{id}', 'edit')->name('edit');   // fixed
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete', 'destroy')->name('destroy');
+    });
+
+    Route::prefix('ledger')->name('ledger.')->controller(LedgerController::class)->group(function () {
+        Route::get('', 'index')->name('index');
     });
 });

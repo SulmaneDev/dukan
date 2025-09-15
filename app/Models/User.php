@@ -63,7 +63,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Supplier::class);
     }
-    
+
     public function customer(): HasMany
     {
         return $this->hasMany(Customer::class);
@@ -85,5 +85,9 @@ class User extends Authenticatable
     public function sale(): HasMany
     {
         return $this->hasMany(Sale::class);
+    }
+    public function balance(): HasMany
+    {
+        return $this->hasMany(Balance::class);
     }
 }
