@@ -21,7 +21,7 @@ class UpdateExpenseRequest extends FormRequest
             'payment_method' => ['required', 'string', 'max:50'],
             'reference'      => ['nullable', 'string', 'max:255'],
             'description'    => ['nullable', 'string'],
-            'media'          => ['nullable', 'file', 'image', 'max:2048'], 
+            'media'          => ['nullable', 'file', 'max:2048'], 
 
         ];
     }
