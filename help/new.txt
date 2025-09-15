@@ -21,11 +21,11 @@ CNIC PHone City Address (City ki base py filter for reports)
 IMEI scan py product ka name aor price automatic get ho gii
 To add also sales and purchase return too 
 Ledger (Paissy ki detail kitna aya kitna gaya)??
+expenses ( Form method cash or back description)
+
 Receipt from customer 
 Payment to supplier 
 General Voucher( 1 to 1 details )
-expenses ( Form method cash or back description)
-
 
 
 

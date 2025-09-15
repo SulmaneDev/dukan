@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\BalanceController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\ExpenseCategoryController;
+use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\LedgerController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PurchaseController;
@@ -137,7 +139,34 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/delete', 'destroy')->name('destroy');
     });
 
+    /**
+     * Ledger board
+     */
     Route::prefix('ledger')->name('ledger.')->controller(LedgerController::class)->group(function () {
         Route::get('', 'index')->name('index');
+    });
+
+    /**
+     * Expense Categories resource.
+     */
+    Route::controller(ExpenseCategoryController::class)->prefix('expense_category')->name('expense_category.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete', 'destroy')->name('destroy');
+    });
+    
+    /**
+     * Expense  resource.
+     */
+    Route::controller(ExpenseController::class)->prefix('expense')->name('expense.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete', 'destroy')->name('destroy');
     });
 });

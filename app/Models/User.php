@@ -90,4 +90,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Balance::class);
     }
+    public function expenseCategory(): HasMany {
+        return $this->hasMany(ExpenseCategory::class);
+    }
+    public function expense(): HasMany {
+        return $this->hasMany(Expense::class);
+    }
 }
