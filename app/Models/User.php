@@ -99,6 +99,9 @@ class User extends Authenticatable
     public function receipt(): HasMany {
         return $this->hasMany(CustomerReceipt::class);
     }
+    public function generalVoucher(): HasMany {
+        return $this->hasMany(GeneralVoucher::class);
+    }
     public function supplier_receipt(): HasMany {
         return $this->hasMany(SupplierReceipt::class);
     }
