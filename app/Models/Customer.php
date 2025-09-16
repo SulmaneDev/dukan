@@ -33,6 +33,10 @@ class Customer extends Model
         return $this->hasMany(SaleReturn::class);
     }
 
+    public function receipt() {
+        return $this->hasMany(CustomerReceipt::class);
+    }
+
     public function purchases() {
         return $this->morphMany(Purchase::class,'party');
     }

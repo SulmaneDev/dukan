@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\PurchaseReturnController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\SaleReturnController;
 use App\Http\Controllers\Auth\SessionController;
+use App\Http\Controllers\CustomerReceiptController;
 use App\Http\Controllers\Feature\ScanController;
+use App\Http\Controllers\SupplierReceiptController;
 use App\Services\Admin\SupplierService;
 use Illuminate\Support\Facades\Route;
 
@@ -157,11 +159,35 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::put('/update/{id}', 'update')->name('update');
         Route::delete('/delete', 'destroy')->name('destroy');
     });
-    
+
     /**
      * Expense  resource.
      */
     Route::controller(ExpenseController::class)->prefix('expense')->name('expense.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete', 'destroy')->name('destroy');
+    });
+
+    /**
+     *Customer Receipt  resource.
+     */
+    Route::controller(CustomerReceiptController::class)->prefix('receipt')->name('receipt.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete', 'destroy')->name('destroy');
+    });
+
+    /**
+     * Supplier receipt  resource.
+     */
+    Route::controller(SupplierReceiptController::class)->prefix('supplier_receipt')->name('supplier_receipt.')->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
