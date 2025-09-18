@@ -27,9 +27,7 @@ Route::middleware('guest')->controller(SessionController::class)->prefix('auth')
     Route::post('register', 'handleRegister')->name('register.handle');
 });
 
-Route::middleware('auth')->get('/', function () {
-    return view('pages.admin.brand.index');
-})->name('home');
+
 
 Route::post('scan', [ScanController::class, 'scan'])->name('scan')->middleware('auth');
 
@@ -217,3 +215,5 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/delete', 'destroy')->name('destroy');
     });
 });
+
+Route::redirect('/', '/admin/brand');;
