@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\CustomerReceiptController;
 use App\Http\Controllers\Feature\ScanController;
 use App\Http\Controllers\Admin\GeneralVoucherController;
+use App\Http\Controllers\Admin\NewLedgerController;
 use App\Http\Controllers\SupplierReceiptController;
 use App\Services\Admin\SupplierService;
 use Illuminate\Support\Facades\Route;
@@ -146,6 +147,13 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
      * Ledger board
      */
     Route::prefix('ledger')->name('ledger.')->controller(LedgerController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+    });
+
+    /**
+     * New Ledger board
+     */
+    Route::prefix('new-ledger')->name('new-ledger.')->controller(NewLedgerController::class)->group(function () {
         Route::get('', 'index')->name('index');
     });
 

@@ -105,7 +105,46 @@
                     <h6 class="submenu-hdr">Balance</h6>
                     <ul>
                         <li><a href="{{ route('admin.balance.index') }}">All Balances</a></li>
-                        {{-- Optional: edit balance requires an {id}, so no direct link --}}
+                    </ul>
+                </li>
+
+                <!-- Ledger -->
+                <li class="submenu-open">
+                    <h6 class="submenu-hdr">Ledger</h6>
+                    <ul>
+                        <li><a href="{{ route('admin.ledger.index') }}">Ledger Board</a></li>
+                        <li><a href="{{ route('admin.new-ledger.index') }}">New Ledger Board</a></li>
+                    </ul>
+                </li>
+
+                <!-- Expenses -->
+                <li class="submenu-open">
+                    <h6 class="submenu-hdr">Expenses</h6>
+                    <ul>
+                        <li><a href="{{ route('admin.expense_category.index') }}">Expense Categories</a></li>
+                        <li><a href="{{ route('admin.expense_category.create') }}">Create Expense Category</a></li>
+                        <li><a href="{{ route('admin.expense.index') }}">All Expenses</a></li>
+                        <li><a href="{{ route('admin.expense.create') }}">Create Expense</a></li>
+                    </ul>
+                </li>
+
+                <!-- Receipts -->
+                <li class="submenu-open">
+                    <h6 class="submenu-hdr">Receipts</h6>
+                    <ul>
+                        <li><a href="{{ route('admin.receipt.index') }}">Customer Receipts</a></li>
+                        <li><a href="{{ route('admin.receipt.create') }}">Create Customer Receipt</a></li>
+                        <li><a href="{{ route('admin.supplier_receipt.index') }}">Supplier Receipts</a></li>
+                        <li><a href="{{ route('admin.supplier_receipt.create') }}">Create Supplier Receipt</a></li>
+                    </ul>
+                </li>
+
+                <!-- General Vouchers -->
+                <li class="submenu-open">
+                    <h6 class="submenu-hdr">Vouchers</h6>
+                    <ul>
+                        <li><a href="{{ route('admin.general_voucher.index') }}">All Vouchers</a></li>
+                        <li><a href="{{ route('admin.general_voucher.create') }}">Create Voucher</a></li>
                     </ul>
                 </li>
 

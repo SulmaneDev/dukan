@@ -31,7 +31,7 @@ class SessionService
             ]);
         };
         $request->session()->regenerate();
-        return redirect()->route('home')->with('alert', [
+        return redirect()->route('admin.brand.index')->with('alert', [
             'type' => 'success',
             'title' => "Success",
             'message' => "Login successfully.",
